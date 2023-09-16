@@ -1,0 +1,288 @@
+combos macro
+mov comboonswap,1
+;all rows with possible 5 cols crushed
+	mov di,0
+	mov totalcols,0
+	mov notincluded, 10
+	mov notincluded2,12
+	mov notincluded3,8
+	mov notincluded4,6
+	.while(totalcols < 10)
+		mov possiblecombsrow,0
+		.while(possiblecombsrow < 3)
+			mov ax, allcandies[di]
+			mov bx, allcandies[di+2]
+			mov cx, allcandies[di+4]
+			mov dx, allcandies[di+6]
+			mov si, allcandies[di+8]
+				.IF (ax == bx && ax == cx && ax == dx && ax == si && allcandies[di] != 0)				;SWITCHSHAPE HAS COLOR DIGIT VALUE OF 2 CLICKED SHAPES
+					mov allcandies[di],0
+					mov allcandies[di+2],0
+					mov allcandies[di+4],0
+					mov allcandies[di+6],0
+					mov allcandies[di+8],0
+					add score,5
+					call crushstr
+					inc comboonswap
+				.ENDIF
+			inc possiblecombsrow	
+			add di,2
+		.endw	
+		.IF(di == notincluded)
+			add di,4	
+		.ELSEIF (di == notincluded2)
+			add di,2
+		.ELSEIF (di == notincluded3)
+			add di,6	
+		.ELSEIF (di == notincluded4)
+			add di,8	
+		.ENDIF	
+		add notincluded,14
+		add notincluded2,14
+		add notincluded3,14
+		add notincluded4,14
+				
+		inc totalcols
+	.endw	
+	
+	
+	;SCORE LIMIT
+	.IF(score >= 80)
+		JMP level1completed
+	.ENDIF
+	
+	;all rows with possible 5 cols crushed
+	mov di,0
+	mov totalcols,0
+	mov notincluded,70
+	mov notincluded2,84
+	mov notincluded3,56
+	mov notincluded4,42
+	.while(totalcols < 10)
+		mov possiblecombsrow,0
+		.while(possiblecombsrow < 3)
+			mov ax, allcandies[di]
+			mov bx, allcandies[di+14]
+			mov cx, allcandies[di+28]
+			mov dx, allcandies[di+42]
+			mov si, allcandies[di+56]
+				.IF (ax == bx && ax == cx && ax == dx && ax == si && allcandies[di] != 0 )				;SWITCHSHAPE HAS COLOR DIGIT VALUE OF 2 CLICKED SHAPES
+					mov allcandies[di],0
+					mov allcandies[di+14],0
+					mov allcandies[di+28],0
+					mov allcandies[di+42],0
+					mov allcandies[di+56],0
+					add score,5
+					call crushstr
+					inc comboonswap
+				.ENDIF
+			inc possiblecombsrow	
+			add di,2
+		.endw	
+		.IF(di == notincluded)
+			add di,4	
+		.ELSEIF (di == notincluded2)
+			add di,2
+		.ELSEIF (di == notincluded3)
+			add di,6	
+		.ELSEIF (di == notincluded4)
+			add di,8		
+		.ENDIF	
+		add notincluded,2
+		add notincluded2,2
+		add notincluded3,2
+		add notincluded4,2
+		inc totalcols
+	.endw	
+	
+	
+	;SCORE LIMIT
+	.IF(score >= 80)
+		JMP level1completed
+	.ENDIF
+	
+	;all rows with possible 4 cols crushed
+	mov di,0
+	mov totalcols,0
+	mov notincluded, 10
+	mov notincluded2,12
+	mov notincluded3,8
+	.while(totalcols < 10)
+		mov possiblecombsrow,0
+		.while(possiblecombsrow < 4)
+			mov ax, allcandies[di]
+			mov bx, allcandies[di+2]
+			mov cx, allcandies[di+4]
+			mov dx, allcandies[di+6]
+				.IF (ax == bx && ax == cx && ax == dx && allcandies[di] != 0 )				;SWITCHSHAPE HAS COLOR DIGIT VALUE OF 2 CLICKED SHAPES
+					mov allcandies[di],0
+					mov allcandies[di+2],0
+					mov allcandies[di+4],0
+					mov allcandies[di+6],0
+					add score,4
+					call crushstr
+					inc comboonswap
+				.ENDIF
+			inc possiblecombsrow	
+			add di,2
+		.endw	
+		.IF(di == notincluded)
+			add di,4	
+		.ELSEIF (di == notincluded2)
+			add di,2
+		.ELSEIF (di == notincluded3)
+			add di,6	
+		.ENDIF	
+		add notincluded,14
+		add notincluded2,14
+		add notincluded3,14
+		inc totalcols
+	.endw	
+	
+	
+	;SCORE LIMIT
+	.IF(score >= 80)
+		JMP level1completed
+	.ENDIF
+	
+	;all rows with possible 4 cols crushed
+	mov di,0
+	mov totalcols,0
+	mov notincluded,70
+	mov notincluded2,84
+	mov notincluded3,56
+	.while(totalcols < 10)
+		mov possiblecombsrow,0
+		.while(possiblecombsrow < 4)
+			mov ax, allcandies[di]
+			mov bx, allcandies[di+14]
+			mov cx, allcandies[di+28]
+			mov dx, allcandies[di+42]
+				.IF (ax == bx && ax == cx && ax == dx && allcandies[di] != 0)				;SWITCHSHAPE HAS COLOR DIGIT VALUE OF 2 CLICKED SHAPES
+					mov allcandies[di],0
+					mov allcandies[di+14],0
+					mov allcandies[di+28],0
+					mov allcandies[di+42],0
+					add score,4
+					call crushstr
+					inc comboonswap
+				.ENDIF
+			inc possiblecombsrow	
+			add di,2
+		.endw	
+		.IF(di == notincluded)
+			add di,4	
+		.ELSEIF (di == notincluded2)
+			add di,2
+		.ELSEIF (di == notincluded3)
+			add di,6				
+		.ENDIF	
+		add notincluded,2
+		add notincluded2,2
+		add notincluded3,2
+		inc totalcols
+	.endw	
+	
+	
+	;SCORE LIMIT
+	.IF(score >= 80)
+		JMP level1completed
+	.ENDIF
+	
+	;all rows with possible 3 cols crushed
+	mov di,0
+	mov totalcols,0
+	mov notincluded,10
+	mov notincluded2,12
+	.while(totalcols < 10)
+		mov possiblecombsrow,0
+		.while(possiblecombsrow < 5)
+			mov ax, allcandies[di]
+			mov bx, allcandies[di+2]
+			mov cx, allcandies[di+4]
+				.IF (ax == bx && ax == cx && allcandies[di] != 0 )				;SWITCHSHAPE HAS COLOR DIGIT VALUE OF 2 CLICKED SHAPES
+					mov allcandies[di],0
+					mov allcandies[di+2],0
+					mov allcandies[di+4],0
+					add score,3
+					call crushstr
+					inc comboonswap
+				.ENDIF
+			inc possiblecombsrow	
+			add di,2
+		.endw	
+		.IF(di == notincluded)
+			add di,4	
+		.ELSEIF (di == notincluded2)
+			add di,2
+		.ENDIF	 
+		add notincluded,14
+		add notincluded2,14
+		inc totalcols
+	.endw	
+			
+	
+	;SCORE LIMIT
+	.IF(score >= 80)
+		JMP level1completed
+	.ENDIF		
+			
+	;all rows with possible 3 cols crushed
+	mov di,0
+	mov totalcols,0
+	mov notincluded,70
+	mov notincluded2,84
+	.while(totalcols < 10)
+		mov possiblecombsrow,0
+		.while(possiblecombsrow < 5)
+			mov ax, allcandies[di]
+			mov bx, allcandies[di+14]
+			mov cx, allcandies[di+28]
+				.IF (ax == bx && ax == cx && allcandies[di] != 0)				;SWITCHSHAPE HAS COLOR DIGIT VALUE OF 2 CLICKED SHAPES
+					mov allcandies[di],0
+					mov allcandies[di+14],0
+					mov allcandies[di+28],0
+					add score,3
+					call crushstr
+					inc comboonswap
+				.ENDIF
+			inc possiblecombsrow	
+			add di,2
+		.endw	
+		.IF(di == notincluded)
+			add di,4	
+		.ELSEIF (di == notincluded2)
+			add di,2			
+		.ENDIF	
+		add notincluded,2
+		add notincluded2,2
+		inc totalcols
+	.endw
+	
+	
+	;SCORE LIMIT
+	.IF(score >= 80)
+		JMP level1completed
+	.ENDIF
+	
+	
+	.IF(comboonswap != 1)
+		delay 1000
+		call refreshscreen
+	.ENDIF	
+	
+	;new random candies
+		mov allcandiesdone,0
+		mov si,0
+		.while (allcandiesdone <49)
+			.IF(allcandies[si] == 0)
+				call Randomizerforshapes
+				mov bx, randnumber
+				mov allcandies[si],bx
+			.ENDIF
+			inc allcandiesdone
+			add si,2
+		.endw
+	delay 1000
+	call refreshscreen
+endm
